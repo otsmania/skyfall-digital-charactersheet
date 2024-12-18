@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ba4ar4davrikp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p74m8"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[resource]
+TextEdit/colors/font_color = Color(0.0196078, 0.0196078, 0.027451, 1)
+TextEdit/styles/1 = null
+TextEdit/styles/normal = SubResource("StyleBoxFlat_p74m8")

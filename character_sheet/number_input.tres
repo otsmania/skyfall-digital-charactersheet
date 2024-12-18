@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bumwitbtb12yc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgd3i"]
+content_margin_left = 7.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.12549)
+draw_center = false
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[resource]
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.411765)
+TextEdit/font_sizes/font_size = 29
+TextEdit/styles/normal = SubResource("StyleBoxFlat_bgd3i")

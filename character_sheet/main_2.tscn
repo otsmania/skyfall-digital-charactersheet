@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd5o7c1f0rc0v"]
+
+[ext_resource type="Texture2D" uid="uid://dmi5kg1liqpot" path="res://F1.png" id="1_fxv4l"]
+[ext_resource type="Texture2D" uid="uid://c2pucdfryscej" path="res://V1.png" id="2_pa6k5"]
+
+[node name="Main2" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.397
+anchor_bottom = 1.0
+offset_right = -762.24
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 60
+
+[node name="TextureRect" type="TextureRect" parent="Control/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_fxv4l")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.603
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 734.24
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_pa6k5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_right = 60
+
+[node name="Camera2D" type="Camera2D" parent="."]

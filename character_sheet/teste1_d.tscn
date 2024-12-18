@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://cetvokb0fonuh"]
+
+[ext_resource type="Script" path="res://CameraController.gd" id="1_l6xkr"]
+[ext_resource type="Texture2D" uid="uid://cbdc3ur7kxbxx" path="res://Bookback.png" id="2_vva1c"]
+[ext_resource type="Texture2D" uid="uid://dmi5kg1liqpot" path="res://F1.png" id="3_xwv75"]
+[ext_resource type="Texture2D" uid="uid://dsvluwn7fco11" path="res://normal.png" id="4_32w2n"]
+[ext_resource type="Texture2D" uid="uid://c2pucdfryscej" path="res://V1.png" id="4_ersux"]
+[ext_resource type="Texture2D" uid="uid://dr3qb7s1qk2ov" path="res://ribbon2.png" id="5_c8fv6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t8jbw"]
+diffuse_texture = ExtResource("3_xwv75")
+normal_texture = ExtResource("4_32w2n")
+specular_shininess = 0.0
+
+[sub_resource type="Gradient" id="Gradient_ki4f7"]
+offsets = PackedFloat32Array(0, 0.722581)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_705pn"]
+gradient = SubResource("Gradient_ki4f7")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.481651)
+
+[sub_resource type="Gradient" id="Gradient_k24vu"]
+offsets = PackedFloat32Array(0, 0.767742)
+colors = PackedColorArray(0.805556, 0.805556, 0.805556, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_401kw"]
+gradient = SubResource("Gradient_k24vu")
+fill = 1
+fill_from = Vector2(0.490826, 0.472477)
+fill_to = Vector2(0.940367, 0.0550459)
+
+[node name="teste1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(964, 543)
+limit_left = -405
+limit_top = -350
+limit_right = 2385
+limit_bottom = 1345
+editor_draw_limits = true
+script = ExtResource("1_l6xkr")
+
+[node name="bookback" type="Sprite2D" parent="."]
+position = Vector2(961, 545)
+scale = Vector2(1.4892, 1.28523)
+texture = ExtResource("2_vva1c")
+
+[node name="front" type="Sprite2D" parent="."]
+modulate = Color(0.85098, 0.85098, 0.85098, 1)
+position = Vector2(594, 512)
+scale = Vector2(0.203621, 0.203621)
+texture = SubResource("CanvasTexture_t8jbw")
+
+[node name="verse" type="Sprite2D" parent="."]
+position = Vector2(1313, 514)
+scale = Vector2(0.204548, 0.204548)
+texture = ExtResource("4_ersux")
+
+[node name="Ribbon2" type="Sprite2D" parent="."]
+position = Vector2(945, 551.051)
+scale = Vector2(0.932956, 1.27028)
+texture = ExtResource("5_c8fv6")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.878431, 0.819608, 0.803922, 1)
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(961, 58)
+scale = Vector2(34.9336, 33.4531)
+color = Color(0.847059, 0.886275, 0.788235, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_705pn")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(1152, 354)
+scale = Vector2(6.15234, 7.69141)
+color = Color(0.509804, 0.568627, 0.898039, 1)
+energy = 1.15
+texture = SubResource("GradientTexture2D_401kw")

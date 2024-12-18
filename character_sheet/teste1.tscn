@@ -1,0 +1,487 @@
+[gd_scene load_steps=14 format=3 uid="uid://csx001biikxm2"]
+
+[ext_resource type="Texture2D" uid="uid://dmi5kg1liqpot" path="res://F1.png" id="1_636w6"]
+[ext_resource type="Texture2D" uid="uid://c2pucdfryscej" path="res://V1.png" id="1_i3xxe"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_opo8g"]
+[ext_resource type="Texture2D" uid="uid://cbdc3ur7kxbxx" path="res://Bookback.png" id="4_m3ja8"]
+[ext_resource type="Texture2D" uid="uid://dr3qb7s1qk2ov" path="res://ribbon2.png" id="5_581ia"]
+[ext_resource type="Theme" uid="uid://ba4ar4davrikp" path="res://style1.tres" id="6_leuwx"]
+
+[sub_resource type="Animation" id="Animation_3ifb3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/PointLight2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(837, 182)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/PointLight2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hdf4v"]
+resource_name = "dancing_light"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/PointLight2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.9, 5.93333, 9.63333, 10.6, 14.6, 17.8, 19.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(881, 182), Vector2(947.416, 193.551), Vector2(973, 198), Vector2(997, 502), Vector2(984.69, 462.702), Vector2(798, 330), Vector2(893, 170), Vector2(1020, 136)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/PointLight2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10.6, 14.6, 19.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4gftr"]
+_data = {
+"RESET": SubResource("Animation_3ifb3"),
+"dancing_light": SubResource("Animation_hdf4v")
+}
+
+[sub_resource type="Gradient" id="Gradient_ki4f7"]
+offsets = PackedFloat32Array(0, 0.722581)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_705pn"]
+gradient = SubResource("Gradient_ki4f7")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.481651)
+
+[sub_resource type="Gradient" id="Gradient_k24vu"]
+offsets = PackedFloat32Array(0, 0.767742)
+colors = PackedColorArray(0.805556, 0.805556, 0.805556, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_401kw"]
+gradient = SubResource("Gradient_k24vu")
+fill = 1
+fill_from = Vector2(0.490826, 0.472477)
+fill_to = Vector2(0.940367, 0.0550459)
+
+[node name="teste1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(964, 543)
+limit_left = -405
+limit_top = -350
+limit_right = 2385
+limit_bottom = 1345
+editor_draw_limits = true
+script = ExtResource("3_opo8g")
+
+[node name="bookback" type="Sprite2D" parent="."]
+position = Vector2(961, 545)
+scale = Vector2(1.4892, 1.28523)
+texture = ExtResource("4_m3ja8")
+
+[node name="front" type="Sprite2D" parent="."]
+position = Vector2(594, 512)
+scale = Vector2(0.203621, 0.203621)
+texture = ExtResource("1_636w6")
+
+[node name="verse" type="Sprite2D" parent="."]
+position = Vector2(1313, 514)
+scale = Vector2(0.204548, 0.204548)
+texture = ExtResource("1_i3xxe")
+
+[node name="Ribbon2" type="Sprite2D" parent="."]
+position = Vector2(945, 551.051)
+scale = Vector2(0.932956, 1.27028)
+texture = ExtResource("5_581ia")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.878431, 0.819608, 0.803922, 1)
+blend_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4gftr")
+}
+autoplay = "dancing_light"
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimationPlayer"]
+position = Vector2(837, 182)
+scale = Vector2(36.9375, 33.4531)
+color = Color(0.847059, 0.886275, 0.788235, 1)
+texture = SubResource("GradientTexture2D_705pn")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(1152, 354)
+scale = Vector2(6.15234, 7.69141)
+color = Color(0.509804, 0.568627, 0.898039, 1)
+energy = 1.15
+texture = SubResource("GradientTexture2D_401kw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 259.0
+offset_top = 34.0
+offset_right = 918.0
+offset_bottom = 993.0
+
+[node name="Nome" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 86.0
+offset_right = 228.0
+offset_bottom = 117.0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.729412)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+placeholder_text = "nome"
+max_length = 18
+expand_to_text_length = true
+flat = true
+
+[node name="Jogador" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 85.0
+offset_right = 541.0
+offset_bottom = 116.0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.729412)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+placeholder_text = "nome"
+max_length = 18
+flat = true
+
+[node name="Idade" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 87.0
+offset_right = 305.062
+offset_bottom = 118.0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.729412)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+placeholder_text = "20"
+alignment = 1
+max_length = 18
+expand_to_text_length = true
+flat = true
+
+[node name="Altura" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 89.0
+offset_right = 380.0
+offset_bottom = 117.0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.729412)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+placeholder_text = "1.45"
+alignment = 1
+max_length = 18
+expand_to_text_length = true
+flat = true
+
+[node name="Vantagem" type="TextEdit" parent="Control"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 593.0
+offset_right = -386.0
+offset_bottom = -32.0
+theme = ExtResource("6_leuwx")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+placeholder_text = "Vantagem"
+draw_tabs = true
+
+[node name="Equip" type="TextEdit" parent="Control"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 393.0
+offset_top = 594.0
+offset_right = -17.0
+offset_bottom = -31.0
+theme = ExtResource("6_leuwx")
+placeholder_text = "equipamento"
+draw_tabs = true
+
+[node name="Hab" type="TextEdit" parent="Control"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1081.0
+offset_top = 297.0
+offset_right = 713.0
+offset_bottom = -315.0
+theme = ExtResource("6_leuwx")
+placeholder_text = "habilidades"
+draw_tabs = true
+
+[node name="Poderes" type="TextEdit" parent="Control"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 722.0
+offset_top = 671.0
+offset_right = 731.0
+offset_bottom = -12.0
+theme = ExtResource("6_leuwx")
+placeholder_text = "poderes"
+draw_tabs = true
+
+[node name="Con" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 334.0
+offset_right = 202.0
+offset_bottom = 384.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Mov" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 291.0
+offset_right = 269.0
+offset_bottom = 341.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="HP" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 255.0
+offset_right = 201.0
+offset_bottom = 305.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Tam" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 295.0
+offset_right = 130.0
+offset_bottom = 345.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Agi" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 211.0
+offset_right = 132.0
+offset_bottom = 261.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="For" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 174.0
+offset_right = 202.0
+offset_bottom = 224.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Dest" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 211.0
+offset_right = 270.0
+offset_bottom = 261.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Sab" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 213.0
+offset_right = 517.0
+offset_bottom = 263.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Car" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 291.0
+offset_right = 517.0
+offset_bottom = 341.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="PerP" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 334.0
+offset_right = 585.0
+offset_bottom = 384.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Mana" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 252.0
+offset_right = 587.0
+offset_bottom = 302.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Edu" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 295.0
+offset_right = 656.0
+offset_bottom = 345.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Int" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 216.0
+offset_right = 656.0
+offset_bottom = 266.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true
+
+[node name="Poder" type="LineEdit" parent="Control"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 176.0
+offset_right = 587.0
+offset_bottom = 226.0
+theme_override_colors/font_placeholder_color = Color(0.184314, 0.184314, 0.184314, 0.803922)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "0"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+virtual_keyboard_type = 2
+flat = true

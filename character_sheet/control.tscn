@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxkv5liy52xgv"]
+
+[ext_resource type="Texture2D" uid="uid://dmi5kg1liqpot" path="res://F1.png" id="1_kknv0"]
+[ext_resource type="Texture2D" uid="uid://c2pucdfryscej" path="res://V1.png" id="2_2r6mc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="front" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 3307.0
+offset_bottom = 4677.0
+texture = ExtResource("1_kknv0")
+stretch_mode = 3
+
+[node name="verse" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_2r6mc")
+stretch_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1654, 2154)
+zoom = Vector2(0.22, 0.22)
